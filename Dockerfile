@@ -14,8 +14,7 @@ RUN apt-get update -qqy \
   && apt-get install --fix-missing \
   && apt-get install -y --no-install-recommends nodejs git android-sdk android-sdk-build-tools android-sdk-platform-23 gradle \
   && rm -rf /var/lib/apt/lists/* \
-  && npm install -g cordova ionic bower gulp \
-  && npm install node-sass async jshint \
+  && npm install -g cordova ionic bower gulp node-sass async jshint \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
