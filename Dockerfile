@@ -6,7 +6,9 @@ ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID
 
 COPY ./licenses/* $ANDROID_SDK_HOME/licenses/
 
-RUN apt-get update \
+USER root
+WORKDIR /tmp/
+RUN apt-get update -qqy \
   && apt-get install -y curl build-essential sudo \
   && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt-get install --fix-missing \
@@ -14,4 +16,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && npm install -g cordova ionic bower gulp \
   && npm install node-sass async jshint \
-  && chmod 777 -R $ANDROID_HOME
+  && chmod 777 -R $ANDROID_HOME \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/*
+USER jenkins
