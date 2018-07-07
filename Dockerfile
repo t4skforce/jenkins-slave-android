@@ -16,7 +16,6 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* \
   && npm install -g cordova ionic bower gulp \
   && npm install node-sass async jshint \
-  && npm audit fix \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
