@@ -18,9 +18,9 @@ RUN apt-get update -qqy \
   && npm install -g ionic \
   && npm install -g bower \
   && npm install -g gulp \
-  && npm install -g node-sass \
-  && npm install -g async \
-  && npm install -g jshint \
+  && npm install node-sass \
+  && npm install async \
+  && npm install jshint \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && chown -R jenkins:jenkins /home/jenkins
