@@ -18,5 +18,6 @@ RUN apt-get update -qqy \
   && npm install node-sass async jshint \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/*
+  && rm -rf /tmp/* \
+  && chown -R ${user}:${group} /home/${user}
 USER jenkins
