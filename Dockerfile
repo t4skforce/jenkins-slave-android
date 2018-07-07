@@ -19,5 +19,5 @@ RUN apt-get update -qqy \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
-  && chown -R ${user}:${group} /home/${user}
+  && chown -R jenkins:jenkins /home/${user}
 USER jenkins
