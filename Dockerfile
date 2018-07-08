@@ -3,7 +3,7 @@ FROM t4skforce/jenkins-slave
 ENV KOTLIN_VERSION 1.2.50
 ENV ANDROID_SDK_VERSION 4333796
 
-ENV KOTLIN_HOME /opt/kotlinc
+ENV KOTLIN_HOME /opt/kotlin
 ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_SDK_HOME $ANDROID_HOME
 ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
