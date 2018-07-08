@@ -26,7 +26,7 @@ RUN apt-get update -qqy \
   && rm gradle.zip \
   && cd /opt \
   && curl -Ls https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip --output kotlin.zip \
-  && unzip kotlin.zip && \
+  && unzip kotlin.zip \
   && rm kotlin.zip \
   && cd ${ANDROID_SDK_HOME} \
   && curl -Ls https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip --output android-sdk.zip \
