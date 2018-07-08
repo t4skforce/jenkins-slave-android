@@ -1,2 +1,2 @@
 # jenkins-slave-android
-android-sdk gradle cordova ionic bower gulp nodejs
+android-sdk gradle kotlin cordova ionic bower gulp nodejs
