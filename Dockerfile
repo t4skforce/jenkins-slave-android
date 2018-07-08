@@ -26,35 +26,15 @@ RUN apt-get update -qqy \
   && curl -Ls https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip --output android-sdk.zip \
   && unzip -o android-sdk.zip \
   && rm android-sdk.zip \
-  && sdkmanager --list \
-  && echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-23 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-22 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-21 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-20 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-19 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-17 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-15 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter android-10 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-24.0.1 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-24.0.0 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-23.0.3 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-23.0.2 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-23.0.1 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-22.0.1 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-21.1.2 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-20.0.0 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-19.1.0 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter build-tools-17.0.0 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter addon-google_apis-google-22 | grep 'package installed' \
-  && echo y | android update sdk --no-ui --all --filter addon-google_apis-google-21 | grep 'package installed' \
   && cd /home/jenkins \
+  && sdkmanager --list \
+  && sdkmanager "platform-tools" \
+  && sdkmanager "platforms;android-28" \
+  && sdkmanager "platforms;android-27" \
+  && sdkmanager "platforms;android-26" \
+  && sdkmanager "platforms;android-25" \
+  && sdkmanager "platforms;android-24" \
+  && sdkmanager "platforms;android-23" \
   && npm install -g cordova \
   && npm install -g ionic \
   && npm install -g bower \
