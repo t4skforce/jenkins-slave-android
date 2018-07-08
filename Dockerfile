@@ -20,11 +20,4 @@ RUN apt-get update -qqy \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && chown -R jenkins:jenkins /home/jenkins
-# Maven cache
-VOLUME /home/jenkins/.m2
-# Gradle cache
-VOLUME /home/jenkins/.gradle
-# Node JS cache
-VOLUME /home/jenkins/.npm
-VOLUME /home/jenkins/.cache
 USER jenkins
