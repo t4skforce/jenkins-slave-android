@@ -25,5 +25,5 @@ VOLUME /home/jenkins/.m2
 # Gradle cache
 VOLUME /home/jenkins/.gradle
 # Node JS cache
-VOLUME /home/jenkins/.cache
+VOLUME /home/jenkins/.npm
 USER jenkins
