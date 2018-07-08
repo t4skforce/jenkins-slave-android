@@ -27,11 +27,13 @@ RUN apt-get update -qqy \
   && rm android-sdk.zip \
   && cd /home/jenkins \
   && yes | sdkmanager --licenses \
-  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v "-rc" | grep "build-tools;" | sort -r | head -n 21  \
-  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v "-rc" | grep "platforms;" | sort -nr | head -n 10 \
-  && sdkmanager "platform-tools" > /dev/null \
-  && sdkmanager "extras;android;m2repository" > /dev/null \
-  && sdkmanager "extras;google;m2repository" > /dev/null \
+  && echo "#!/bin/bash" > install.sh \
+  && echo "sdkmanager \"tools\" \"platform-tools\" > /dev/null" > install.sh \
+  && echo "sdkmanager \"extras;android;m2repository\" > /dev/null" > install.sh \
+  && echo "sdkmanager \"extras;google;m2repository\" > /dev/null" > install.sh \
+  && bash -c 'for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '\-rc' | grep 'build-tools\;' | sort -r | head -n 1); do echo "echo \"$VER\" && sdkmanager \"$VER\" #> /dev/null 2>&1" >> install.sh; done' \
+  && bash -c 'for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '\-rc' | grep 'platforms\;' | cut -d'-' -f2 | sort -nr | head -n 6); do echo "echo \"platforms;android-$VER\" && sdkmanager \"platforms;android-$VER\" #> /dev/null 2>&1" >> install.sh ; done' \
+  && chmod +x install.sh && ./install.sh && rm ./install.sh \
   && npm install -g cordova \
   && npm install -g ionic \
   && npm install -g bower \
