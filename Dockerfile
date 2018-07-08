@@ -27,8 +27,8 @@ RUN apt-get update -qqy \
   && rm android-sdk.zip \
   && cd /home/jenkins \
   && yes | sdkmanager --licenses \
-  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '-rc' | grep 'build-tools;' | sort -r | head -n 21  \
-  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '-rc' | grep 'platforms;' | sort -nr | head -n 10 \
+  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v "-rc" | grep "build-tools;" | sort -r | head -n 21  \
+  && sdkmanager --list | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v "-rc" | grep "platforms;" | sort -nr | head -n 10 \
   && sdkmanager "platform-tools" > /dev/null \
   && sdkmanager "extras;android;m2repository" > /dev/null \
   && sdkmanager "extras;google;m2repository" > /dev/null \
