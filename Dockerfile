@@ -13,6 +13,7 @@ RUN apt-get update -qqy \
   && apt-get install --fix-missing \
   && apt-get install -y --no-install-recommends nodejs git android-sdk android-sdk-build-tools android-sdk-platform-23 gradle \
   && rm -rf /var/lib/apt/lists/* \
+  && find / -name android \
   && echo "y" | android update sdk --all --filter tools --no-ui --force > /dev/null \
   && npm install -g cordova \
   && npm install -g ionic \
