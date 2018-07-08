@@ -8,8 +8,6 @@ ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_SDK_HOME $ANDROID_HOME
 ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
 
-#COPY ./licenses/* $ANDROID_SDK_HOME/licenses/
-
 USER root
 RUN apt-get update -qqy \
   && apt-get install -y curl build-essential sudo zip \
