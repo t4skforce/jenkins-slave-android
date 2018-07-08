@@ -1,14 +1,12 @@
 FROM t4skforce/jenkins-slave
 
-ENV GRADLE_VERSION 4.8.1
 ENV KOTLIN_VERSION 1.2.50
 ENV ANDROID_SDK_VERSION 4333796
 
-ENV GRADLE_HOME /opt/gradle
 ENV KOTLIN_HOME /opt/kotlinc
-ENV ANDROID_HOME /usr/lib/android-sdk
+ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH ${PATH}:${GRADLE_HOME}/bin:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
+ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
 
 COPY ./licenses/* $ANDROID_SDK_HOME/licenses/
 
@@ -17,17 +15,13 @@ RUN apt-get update -qqy \
   && apt-get install -y curl build-essential sudo zip \
   && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt-get install --fix-missing \
-  && apt-get install -y --no-install-recommends nodejs git android-sdk android-sdk-build-tools android-sdk-platform-23 gradle \
+  && apt-get install -y --no-install-recommends nodejs git gradle \
   && rm -rf /var/lib/apt/lists/* \
-  && cd /opt \
-  && curl -Ls https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip --output gradle.zip \
-  && unzip gradle.zip \
-  && ls -d */ | sed 's/\/*$//g' | xargs -I{} mv {} gradle \
-  && rm gradle.zip \
   && cd /opt \
   && curl -Ls https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip --output kotlin.zip \
   && unzip kotlin.zip \
   && rm kotlin.zip \
+  && mkdir -p ${ANDROID_SDK_HOME} \
   && cd ${ANDROID_SDK_HOME} \
   && curl -Ls https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip --output android-sdk.zip \
   && unzip -o android-sdk.zip \
