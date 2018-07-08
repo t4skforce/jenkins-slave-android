@@ -2,7 +2,7 @@ FROM t4skforce/jenkins-slave
 
 ENV ANDROID_HOME /usr/lib/android-sdk
 ENV ANDROID_SDK_HOME $ANDROID_HOME
-ENV PATH $PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/tools/bin:$JAVA_HOME/bin
+ENV PATH $PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/tools/bin:$JAVA_HOME/bin
 
 COPY ./licenses/* $ANDROID_SDK_HOME/licenses/
 
