@@ -27,8 +27,11 @@ RUN apt-get update -qqy \
   && unzip -o android-sdk.zip \
   && rm android-sdk.zip \
   && cd /home/jenkins \
-  && sdkmanager --list \
+  && sdkmanager --list | awk "{print $1}" | grep "build-tools;" | sort -r  \
+  && sdkmanager --list | awk "{print $1}" | grep "platforms;" | sort -r  \
   && sdkmanager "platform-tools" \
+  && sdkmanager "extras;android;m2repository" \
+  && sdkmanager "extras;google;m2repository" \
   && sdkmanager "platforms;android-28" \
   && sdkmanager "platforms;android-27" \
   && sdkmanager "platforms;android-26" \
