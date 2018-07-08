@@ -16,7 +16,6 @@ RUN apt-get update -qqy \
   && npm install -g cordova \
   && npm install -g ionic \
   && npm install -g bower \
-  && npm install -g gulp \
   && npm install -g node-sass \
   && npm install -g async \
   && npm install -g jshint \
