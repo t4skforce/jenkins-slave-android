@@ -35,6 +35,7 @@ RUN apt-get update -qqy \
   && chmod +x install.sh \
   && ./install.sh \
   && rm ./install.sh \
+  && ln -s $ANDROID_HOME/build-tools/*/zipalign /usr/bin/zipalign \
   && npm install -g cordova \
   && npm install -g ionic \
   && npm install -g bower \
