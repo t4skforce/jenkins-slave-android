@@ -1,7 +1,9 @@
 FROM t4skforce/jenkins-slave
 
-ENV KOTLIN_VERSION 1.2.50
-ENV ANDROID_SDK_VERSION 4333796
+ENV KOTLIN_VERSION ""
+ENV KOTLIN_DOWNLOADURL ""
+ENV ANDROID_SDK_VERSION ""
+ENV ANDROID_SDK_DOWNLOADURL ""
 
 ENV KOTLIN_HOME /opt/kotlin
 ENV ANDROID_HOME /opt/android-sdk
@@ -15,12 +17,12 @@ RUN apt-get update -qqy \
   && apt-get install --fix-missing \
   && apt-get install -y --no-install-recommends nodejs git gradle \
   && cd /opt \
-  && curl -Ls https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip --output kotlin.zip \
+  && curl -Ls ${KOTLIN_DOWNLOADURL} --output kotlin.zip \
   && unzip -q kotlin.zip \
   && rm kotlin.zip \
   && mkdir -p ${ANDROID_SDK_HOME} \
   && cd ${ANDROID_SDK_HOME} \
-  && curl -Ls https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip --output android-sdk.zip \
+  && curl -Ls ${ANDROID_SDK_DOWNLOADURL} --output android-sdk.zip \
   && unzip -q android-sdk.zip \
   && rm android-sdk.zip \
   && cd /home/jenkins \
