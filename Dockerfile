@@ -1,7 +1,7 @@
 FROM t4skforce/jenkins-slave
 
-ENV KOTLIN_VERSION ""
-ENV KOTLIN_DOWNLOADURL ""
+ENV KOTLIN_VERSION "v1.2.51"
+ENV KOTLIN_DOWNLOADURL "https://github.com/JetBrains/kotlin/releases/download/v1.2.51/kotlin-compiler-1.2.51.zip"
 ENV ANDROID_SDK_VERSION ""
 ENV ANDROID_SDK_DOWNLOADURL ""
 
