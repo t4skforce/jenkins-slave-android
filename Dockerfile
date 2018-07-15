@@ -45,5 +45,5 @@ RUN apt-get update -qqy \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
-  && chown -R jenkins:jenkins /home/jenkins
+  && chown -R jenkins:jenkins /home/jenkins 2> /dev/null; if [ $? -ne 0 ]; then echo "cannot chown directory"; fi
 USER jenkins
