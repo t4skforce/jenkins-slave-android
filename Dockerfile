@@ -1,7 +1,7 @@
 FROM t4skforce/jenkins-slave
 
-ENV UID=1000
-ENV GID=1000
+ENV UID 1000
+ENV GID 1000
 ENV KOTLIN_VERSION "v1.2.51"
 ENV KOTLIN_DOWNLOADURL "https://github.com/JetBrains/kotlin/releases/download/v1.2.51/kotlin-compiler-1.2.51.zip"
 ENV ANDROID_SDK_VERSION "4333796"
@@ -47,7 +47,7 @@ RUN apt-get update -qqy \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
-  && groupmod -g $GID jenkins \
-  && usermod -u $UID -g $GID jenkins \
+  && groupmod -g ${GID} jenkins \
+  && usermod -u ${UID} -g ${GID} jenkins \
   && chown -R jenkins:jenkins /home/jenkins 2> /dev/null; if [ $? -ne 0 ]; then echo "cannot chown directory"; fi
 USER jenkins
