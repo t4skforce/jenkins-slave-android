@@ -44,6 +44,5 @@ RUN apt-get update -qqy \
   && npm install -g gulp \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/* \
-  && chown -R jenkins:jenkins /home/jenkins
+  && rm -rf /tmp/*
 USER jenkins
