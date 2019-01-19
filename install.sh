@@ -4,7 +4,6 @@ OUTFILE=/tmp/install.exp
 
 function auto_accept {
 cat <<EOF >>$OUTFILE
-puts "expect: $1"
 spawn $1;
 expect {
   "y/N" { exp_send "y\r" ; exp_continue }
