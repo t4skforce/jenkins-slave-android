@@ -27,7 +27,7 @@ RUN apt-get update -qqy \
   && unzip -q android-sdk.zip \
   && rm android-sdk.zip \
   && cd /home/jenkins \
-  && /tmp/accept-licenses.exp \
+  && expect /tmp/accept-licenses.exp \
   && echo "#!/bin/bash" > install.sh \
   && echo "echo \"tools\" && sdkmanager \"tools\" > /dev/null 2>&1" > install.sh \
   && echo "echo \"platform-tools\" && sdkmanager \"platform-tools\" > /dev/null 2>&1" > install.sh \
@@ -37,7 +37,7 @@ RUN apt-get update -qqy \
   && for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '\-rc' | grep 'platforms\;' | cut -d'-' -f2 | sort -nr | head -n 6); do echo "echo \"platforms;android-$VER\" && sdkmanager \"platforms;android-$VER\" > /dev/null 2>&1" >> install.sh ; done \
   && chmod +x install.sh \
   && ./install.sh \
-  && /tmp/accept-licenses.exp \
+  && expect /tmp/accept-licenses.exp \
   && rm ./install.sh \
   && ln -s $ANDROID_HOME/build-tools/*/zipalign /usr/bin/zipalign \
   && npm install -g cordova \
