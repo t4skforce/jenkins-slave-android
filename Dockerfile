@@ -11,7 +11,7 @@ ENV ANDROID_SDK_HOME $ANDROID_HOME
 ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
 
 USER root
-COPY /accept-licenses.exp /tmp/accept-licenses.exp
+COPY /install.sh /tmp/install.sh
 RUN apt-get update -qqy \
   && apt-get install -y curl build-essential sudo zip expect \
   && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
@@ -27,18 +27,7 @@ RUN apt-get update -qqy \
   && unzip -q android-sdk.zip \
   && rm android-sdk.zip \
   && cd /home/jenkins \
-  && expect /tmp/accept-licenses.exp \
-  && echo "#!/bin/bash" > install.sh \
-  && echo "echo \"tools\" && sdkmanager \"tools\" > /dev/null 2>&1" > install.sh \
-  && echo "echo \"platform-tools\" && sdkmanager \"platform-tools\" > /dev/null 2>&1" > install.sh \
-  && echo "echo \"extras;android;m2repository\" && sdkmanager \"extras;android;m2repository\" > /dev/null 2>&1" > install.sh \
-  && echo "echo \"extras;google;m2repository\" && sdkmanager \"extras;google;m2repository\" > /dev/null 2>&1" > install.sh \
-  && for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '\-rc' | grep 'build-tools\;' | sort -r | head -n 1); do echo "echo \"$VER\" && sdkmanager \"$VER\" > /dev/null 2>&1" >> install.sh; done \
-  && for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | grep -v '\-rc' | grep 'platforms\;' | cut -d'-' -f2 | sort -nr | head -n 6); do echo "echo \"platforms;android-$VER\" && sdkmanager \"platforms;android-$VER\" > /dev/null 2>&1" >> install.sh ; done \
-  && chmod +x install.sh \
-  && ./install.sh \
-  && expect /tmp/accept-licenses.exp \
-  && rm ./install.sh \
+  && . /tmp/install.sh \
   && ln -s $ANDROID_HOME/build-tools/*/zipalign /usr/bin/zipalign \
   && npm install -g cordova \
   && npm install -g ionic \
