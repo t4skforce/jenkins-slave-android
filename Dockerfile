@@ -27,7 +27,7 @@ RUN apt-get update -qqy \
   && unzip -q android-sdk.zip \
   && rm android-sdk.zip \
   && cd /home/jenkins \
-  && . /tmp/install.sh \
+  && chmod +x /tmp/install.sh && /tmp/install.sh \
   && ln -s $ANDROID_HOME/build-tools/*/zipalign /usr/bin/zipalign \
   && npm install -g cordova \
   && npm install -g ionic \
