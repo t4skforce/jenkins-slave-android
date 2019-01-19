@@ -1,8 +1,0 @@
-#!/usr/bin/expect
-
-set timeout -1;
-spawn sdkmanager --licenses;
-expect {
-  "y/N" { exp_send "y\r" ; exp_continue }
-  eof
-}
