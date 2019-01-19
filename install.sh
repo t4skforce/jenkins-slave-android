@@ -15,6 +15,7 @@ EOF
 cat <<EOF >$OUTFILE
 #!/usr/bin/expect
 set timeout -1;
+log_user 0;
 EOF
 
 auto_accept 'sdkmanager --licenses'
