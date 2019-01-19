@@ -31,5 +31,4 @@ for VER in $(sdkmanager --list 2>/dev/null | cut -d'|' -f1 | awk '{$1=$1};1' | g
 	auto_accept "sdkmanager \"platforms;android-$VER\""
 done
 
-cat $OUTFILE
 expect $OUTFILE
