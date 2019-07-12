@@ -29,7 +29,7 @@ RUN apt-get update -qqy \
   && cd /home/jenkins \
   && chmod +x /tmp/install.sh && /tmp/install.sh \
   && ln -s $ANDROID_HOME/build-tools/*/zipalign /usr/bin/zipalign \
-  && npm install -g cordova \
+  && npm install -g cordova@8.1.2 \
   && npm install -g ionic \
   && npm install -g bower \
   && npm install -g gulp \
