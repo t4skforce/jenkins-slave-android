@@ -33,6 +33,7 @@ RUN apt-get update -qqy \
   && npm install -g ionic \
   && npm install -g bower \
   && npm install -g gulp \
+  && npm install -g gulp-sass \
   && chmod 777 -R $ANDROID_HOME \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
