@@ -2,8 +2,8 @@ FROM t4skforce/jenkins-slave
 
 ENV KOTLIN_VERSION "v1.4.21"
 ENV KOTLIN_DOWNLOADURL "https://github.com/JetBrains/kotlin/releases/download/v1.4.21/kotlin-compiler-1.4.21.zip"
-ENV ANDROID_SDK_VERSION "6609375"
-ENV ANDROID_SDK_DOWNLOADURL "https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip"
+ENV ANDROID_SDK_VERSION "6858069"
+ENV ANDROID_SDK_DOWNLOADURL "https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip"
 
 ENV KOTLIN_HOME /opt/kotlin
 ENV ANDROID_HOME /opt/android-sdk
