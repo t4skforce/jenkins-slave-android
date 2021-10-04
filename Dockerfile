@@ -16,7 +16,7 @@ COPY /install.sh /tmp/install.sh
 RUN set -xe \
   && apt-get update -qqy \
   && apt-get install -y curl build-essential sudo zip expect \
-  && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+  && curl -skL https://deb.nodesource.com/setup_12.x | bash - \
   && apt-get install --fix-missing \
   && apt-get install -y --no-install-recommends nodejs git gradle \
   && cd /opt \
