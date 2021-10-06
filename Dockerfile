@@ -14,7 +14,7 @@ ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/too
 USER root
 COPY /install.sh /tmp/install.sh
 RUN set -xe \
-  && apt-get update -qqy \
+  && apt-get update -qqy || apt-get --only-upgrade install ca-certificates -y && apt-get update -qqy \
   && apt-get install -y curl build-essential sudo zip expect \
   && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install --fix-missing \
