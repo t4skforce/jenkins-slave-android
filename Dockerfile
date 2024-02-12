@@ -4,7 +4,7 @@ ARG KOTLIN_VERSION="v1.9.21"
 ARG KOTLIN_DOWNLOADURL="https://github.com/JetBrains/kotlin/releases/download/v1.9.21/kotlin-compiler-1.9.21.spdx.json"
 ARG ANDROID_SDK_VERSION="10406996"
 ARG ANDROID_SDK_DOWNLOADURL="https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip"
-ARG BUILD_DATE="2023-11-26T10:47:10Z"
+ARG BUILD_DATE="2024-02-12T12:08:02Z"
 
 ENV KOTLIN_HOME /opt/kotlin
 ENV ANDROID_HOME /opt/android-sdk
