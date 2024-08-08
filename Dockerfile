@@ -1,7 +1,7 @@
 FROM t4skforce/jenkins-slave
 
-ARG KOTLIN_VERSION="v1.9.25"
-ARG KOTLIN_DOWNLOADURL="https://github.com/JetBrains/kotlin/releases/download/v1.9.25/kotlin-compiler-1.9.25.spdx.json"
+ARG KOTLIN_VERSION="v2.0.10"
+ARG KOTLIN_DOWNLOADURL="https://github.com/JetBrains/kotlin/releases/download/v2.0.10/kotlin-compiler-2.0.10.spdx.json"
 ARG ANDROID_SDK_VERSION="11076708"
 ARG ANDROID_SDK_DOWNLOADURL="https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip"
 ARG BUILD_DATE="2024-08-08T20:53:33Z"
