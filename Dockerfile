@@ -4,7 +4,7 @@ ARG KOTLIN_VERSION="v2.0.20"
 ARG KOTLIN_DOWNLOADURL="https://github.com/JetBrains/kotlin/releases/download/v2.0.20/kotlin-compiler-2.0.20.spdx.json"
 ARG ANDROID_SDK_VERSION="11076708"
 ARG ANDROID_SDK_DOWNLOADURL="https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip"
-ARG BUILD_DATE="2024-08-25T09:47:06Z"
+ARG BUILD_DATE="2024-08-29T20:53:22Z"
 
 ENV KOTLIN_HOME /opt/kotlin
 ENV ANDROID_HOME /opt/android-sdk
